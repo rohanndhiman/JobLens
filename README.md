@@ -230,7 +230,33 @@ sort
 
 ## ☁️ Deployment
 
+### GitHub Pages Demo
+
+GitHub Pages can host the static frontend demo:
+
+```text
+https://rohanndhiman.github.io/JobLens/
+```
+
+This repository includes a GitHub Actions workflow that deploys the `frontend/` folder automatically whenever code is pushed to `main`.
+
+To enable it:
+
+```text
+Repository → Settings → Pages → Build and deployment → Source: GitHub Actions
+```
+
+Then open the latest workflow run under:
+
+```text
+Repository → Actions → Deploy GitHub Pages
+```
+
+⚠️ GitHub Pages only hosts static files. Real login, MongoDB storage, and protected API routes need the Node.js backend deployed separately.
+
 ### Render Setup
+
+Use Render when you want the full working app with backend and database.
 
 1. Push this repository to GitHub.
 2. Create a new **Web Service** on Render.
