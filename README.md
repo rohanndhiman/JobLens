@@ -298,7 +298,7 @@ JWT_SECRET=your long random production secret
 | Name | Role |
 |------|------|
 | Rohan Dhiman | Project owner and developer |
-| Add teammate name | Collaborator |
+| Prachi Pandey | Collaborator and developer |
 
 To add collaborators on GitHub:
 
