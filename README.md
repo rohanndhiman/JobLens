@@ -1,41 +1,96 @@
-# JobLens
+<div align="center">
 
-JobLens is a full-stack job application tracker for organizing a job search from first application to offer. It includes authentication, application CRUD, status and priority tracking, dashboard stats, and analytics charts.
+# ⚡ JobLens
 
-## Live Demo
+**📌 Track Applications + 🔐 Secure Auth + 📊 Analytics Dashboard**  
+*Organize your job hunt. Follow every lead. Turn chaos into clarity.*
 
-Add your deployed URL here after publishing:
+---
+
+<p>
+  <a href="https://nodejs.org/">
+    <img alt="Node.js" src="https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white" />
+  </a>
+  <a href="https://expressjs.com/">
+    <img alt="Express" src="https://img.shields.io/badge/Backend-Express-000000?logo=express&logoColor=white" />
+  </a>
+  <a href="https://www.mongodb.com/">
+    <img alt="MongoDB" src="https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white" />
+  </a>
+  <a href="https://jwt.io/">
+    <img alt="JWT" src="https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white" />
+  </a>
+  <a href="https://www.chartjs.org/">
+    <img alt="Chart.js" src="https://img.shields.io/badge/Charts-Chart.js-FF6384?logo=chartdotjs&logoColor=white" />
+  </a>
+</p>
+
+</div>
+
+---
+
+## 🌍 Overview
+
+**JobLens** is a full-stack job application tracker built to help users manage every stage of their job search.
+
+It brings together **secure authentication**, **persistent MongoDB storage**, **application management**, and **visual analytics** in one clean dashboard.
+
+No messy spreadsheets. No forgotten follow-ups.  
+Just one focused place to track your career pipeline.
+
+---
+
+## 🧩 How It Works
 
 ```text
-https://your-joblens-site.onrender.com
+👤 User → 🔐 Register / Login → 🎫 JWT Token
+                         │
+                         ├── 📌 Create Job Applications
+                         ├── 🔎 Search, Filter, Sort
+                         ├── ✏️ Update Status / Priority
+                         └── 📊 View Dashboard + Analytics
+
+MongoDB stores users and jobs securely by userId.
 ```
 
-## Features
+🧠 This flow ensures:
 
-- Register and log in with JWT-based authentication
-- Store user accounts and applications in MongoDB
-- Add, edit, delete, search, filter, and sort job applications
-- Track status: `Applied`, `Interview`, `Offer`, `Rejected`, `Ghosted`, `Withdrawn`
-- Track priority: `High`, `Medium`, `Low`
-- Dashboard with totals, interview count, offer count, rejection count, and interview rate
-- Analytics charts powered by Chart.js
-- Demo mode when the backend is unavailable
-- Responsive layout with a mobile sidebar
+- Each user only sees their own job applications.
+- Passwords are hashed before being stored.
+- Job data persists in MongoDB.
+- Analytics update from real application data.
 
-## Tech Stack
+---
 
-- Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express
-- Database: MongoDB with Mongoose
-- Authentication: JWT and bcryptjs
-- Charts: Chart.js
+## ✨ Key Features
 
-## Collaborators
+| 🚀 Feature | 💡 Description |
+|-------------|----------------|
+| 🔐 **User Authentication** | Register and log in securely with JWT-based auth. |
+| 🧂 **Password Hashing** | Passwords are hashed using `bcryptjs` before storage. |
+| 📌 **Application Tracking** | Add, edit, delete, search, filter, and sort job applications. |
+| 🏷️ **Status Management** | Track jobs as `Applied`, `Interview`, `Offer`, `Rejected`, `Ghosted`, or `Withdrawn`. |
+| 🎯 **Priority Tracking** | Mark applications as `High`, `Medium`, or `Low` priority. |
+| 📊 **Analytics Dashboard** | View totals, interview rate, offer count, status charts, and activity trends. |
+| 🧪 **Demo Mode** | Explore the UI even when the backend is unavailable. |
+| 📱 **Responsive UI** | Mobile-friendly layout with sidebar navigation. |
 
-- Rohan Dhiman - Project owner and developer
-- Add teammate names here after inviting them to the GitHub repository
+---
 
-## Project Structure
+## 🧱 Tech Stack
+
+| Layer | Technology |
+|--------|-------------|
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Node.js, Express |
+| Database | MongoDB, Mongoose |
+| Authentication | JWT, bcryptjs |
+| Charts | Chart.js |
+| Deployment | Render or any Node.js hosting platform |
+
+---
+
+## 📁 Project Structure
 
 ```text
 job-tracker-v2/
@@ -57,34 +112,29 @@ job-tracker-v2/
 `-- README.md
 ```
 
-## Local Setup
+---
 
-### 1. Prerequisites
+## ⚙️ Installation
 
-Install these first:
+```powershell
+# Clone repository
+git clone https://github.com/rohanndhiman/JobLens.git
+cd JobLens
 
-- Node.js 18 or newer
-- npm
-- MongoDB locally, or a MongoDB Atlas connection string
-
-### 2. Install Dependencies
-
-From the project root:
-
-```bash
+# Install dependencies
 npm install
-```
 
-You can also install from the backend folder:
-
-```bash
+# Optional: install from backend folder directly
 cd backend
 npm install
+cd ..
 ```
 
-### 3. Configure Environment Variables
+---
 
-Create a `.env` file in the project root or set environment variables in your hosting platform:
+## 🔑 Environment Variables
+
+Create a `.env` file or add these variables in your deployment platform:
 
 ```text
 PORT=5000
@@ -92,70 +142,98 @@ MONGO_URI=mongodb://localhost:27017/jobtracker
 JWT_SECRET=replace-with-a-long-random-secret
 ```
 
-For MongoDB Atlas, use a connection string like:
+For MongoDB Atlas:
 
 ```text
-mongodb+srv://username:password@cluster-name.mongodb.net/jobtracker?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://username:password@cluster-name.mongodb.net/jobtracker?retryWrites=true&w=majority
 ```
 
-### 4. Start the App
+⚠️ Never commit your real `.env` file. Use `.env.example` as the safe template.
 
-From the project root:
+---
 
-```bash
+## ▶️ Running the Application
+
+```powershell
+# Start the full app
 npm start
 ```
 
-The app runs at:
+Open:
 
 ```text
 http://localhost:5000
 ```
 
-The Express server also serves the frontend from the `frontend/` folder, so you do not need a separate frontend build step.
+The Express backend serves the frontend automatically, so there is no separate frontend build step.
 
-### 5. Seed Demo Data
+---
 
-Optional, but useful for testing:
+## 🌱 Seed Demo Data
 
-```bash
+```powershell
 npm run seed
 ```
 
-Demo login:
+Demo account:
 
 ```text
 Email: demo@joblens.app
 Password: demo123
 ```
 
-## API Reference
+---
+
+## 🧠 Workflow Explained
+
+1. **Register / Login**  
+   - User creates an account or signs in.  
+   - Backend validates credentials and returns a JWT.  
+   - Frontend stores the token in `localStorage`.
+
+2. **Add Application**  
+   - User enters company, role, status, priority, salary, notes, URL, and contact details.  
+   - Backend stores the application in MongoDB with the current user's `userId`.
+
+3. **Manage Pipeline**  
+   - User can update status and priority quickly.  
+   - Applications can be searched, filtered, sorted, edited, or deleted.
+
+4. **Analyze Progress**  
+   - Dashboard calculates totals, interviews, offers, rejections, and interview rate.  
+   - Chart.js displays status, timeline, and priority breakdowns.
+
+---
+
+## 🧰 API Reference
 
 | Method | Endpoint | Auth | Description |
-| --- | --- | --- | --- |
-| `POST` | `/register` | No | Create a new user account |
+|--------|----------|------|-------------|
+| `POST` | `/register` | No | Create a new account |
 | `POST` | `/login` | No | Log in and receive a JWT |
-| `GET` | `/jobs` | Yes | Get the current user's applications |
-| `POST` | `/jobs` | Yes | Create an application |
+| `GET` | `/jobs` | Yes | Get current user's applications |
+| `POST` | `/jobs` | Yes | Create a new application |
 | `PUT` | `/jobs/:id` | Yes | Update an application |
 | `DELETE` | `/jobs/:id` | Yes | Delete an application |
 | `GET` | `/stats` | Yes | Get summary stats |
 
-`GET /jobs` supports these query parameters:
+`GET /jobs` supports:
 
-- `status`
-- `priority`
-- `search`
-- `sort`
+```text
+status
+priority
+search
+sort
+```
 
-## Deployment
+---
 
-This project is ready to deploy as one Node.js web service because the backend serves the frontend.
+## ☁️ Deployment
 
-### Recommended: Render
+### Render Setup
 
-1. Push this project to GitHub.
-2. Create a new Web Service on Render.
+1. Push this repository to GitHub.
+2. Create a new **Web Service** on Render.
 3. Connect your GitHub repository.
 4. Use these settings:
 
@@ -172,39 +250,55 @@ MONGO_URI=your MongoDB Atlas connection string
 JWT_SECRET=your long random production secret
 ```
 
-6. Deploy and open the generated Render URL.
+6. Deploy and open your Render URL.
 
-### MongoDB Atlas Checklist
+---
 
-- Create a free Atlas cluster.
-- Create a database user.
-- Add your IP address, or use `0.0.0.0/0` for broad deploy access.
-- Copy the connection string into `MONGO_URI`.
-- Replace `<password>` with the database user's real password.
+## 🧭 Troubleshooting
 
-## Push to GitHub
+| Problem | Possible Solution |
+|----------|------------------|
+| ❌ *Login/Register fails* | Check that the backend is running and MongoDB is connected. |
+| ⚠️ *MongoDB connection error* | Verify `MONGO_URI`, Atlas password, and network access settings. |
+| ⛔ *Unauthorized request* | Log in again so the frontend gets a fresh JWT token. |
+| 📡 *Frontend cannot reach API* | Locally, use `http://localhost:5000`; deployed app uses the deployed origin automatically. |
+| 🧩 *Missing packages* | Run `npm install` from the project root. |
+| 🧪 *No database available* | Use demo mode to preview the UI without backend data. |
 
-If this folder is not already a Git repo, run:
+---
 
-```bash
-git init
-git add .
-git commit -m "Initial JobLens app"
+## 👥 Collaborators
+
+| Name | Role |
+|------|------|
+| Rohan Dhiman | Project owner and developer |
+| Add teammate name | Collaborator |
+
+To add collaborators on GitHub:
+
+```text
+Repository → Settings → Collaborators and teams → Add people
 ```
 
-Then create an empty GitHub repository and connect it:
+---
 
-```bash
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-git push -u origin main
-```
+## 🔐 Security Notes
 
-Do not commit `.env` or `node_modules/`. They are ignored by `.gitignore`.
+- Passwords are hashed with `bcryptjs`.
+- JWT tokens are required for protected job routes.
+- Users can only access jobs linked to their own account.
+- Production deployments should use a strong `JWT_SECRET`.
+- Never commit `.env`, database passwords, or secrets.
 
-## Notes
+---
 
-- The frontend automatically uses `http://localhost:5000` during local development.
-- After deployment, the frontend uses the deployed site URL as the API base.
-- If the backend cannot be reached during login, the UI can load demo mode for presentation.
-- Extra explanation files are available in `docs/` for viva, interview, or project walkthrough prep.
+## 🧾 License
+
+This project is open for learning, modification, and contribution.
+
+<div align="center">
+
+💙 Built for students, developers, and job seekers who want a clearer application pipeline.  
+_“Track smarter. Follow up faster. Land better.”_
+
+</div>
