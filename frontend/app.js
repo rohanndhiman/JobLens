@@ -1,4 +1,6 @@
-const API = "http://localhost:5000";
+const API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:5000"
+  : window.location.origin;
 
 const STATUS_OPTIONS = ["Applied", "Interview", "Offer", "Rejected", "Ghosted", "Withdrawn"];
 const PRIORITY_OPTIONS = ["High", "Medium", "Low"];
