@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobLens Viva Guide</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #5b6474;
+      --line: #d9e1ec;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --good: #166534;
+      --warn: #92400e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 20mm 16mm;
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 28px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    h3 {
+      font-size: 17px;
+      margin-top: 22px;
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      font-size: 15px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      margin: 8px 0 12px 22px;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 13px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #eff6ff;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      background: #eef2f7;
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    .lead {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 8px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .good { color: var(--good); font-weight: 700; }
+    .warn { color: var(--warn); font-weight: 700; }
+
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media print {
+      body { background: white; }
+      .page {
+        margin: 0;
+        width: auto;
+        min-height: auto;
+        padding: 12mm;
+      }
+      h2, h3, h4 { break-after: avoid; }
+      table, .box { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>JobLens Viva Guide</h1>
+    <p class="lead">Detailed and easy-to-learn explanation of the JobLens project for viva, demo, and interview preparation.</p>
+
+    <div class="box">
+      <strong>One-line explanation:</strong> JobLens is a full-stack job application tracker where users can register, log in securely, add job applications, update their status, and view dashboard analytics.
+    </div>
+
+    <p>
+      <span class="pill">Frontend: HTML + CSS + JavaScript</span>
+      <span class="pill">Backend: Node.js + Express</span>
+      <span class="pill">Database: MongoDB + Mongoose</span>
+      <span class="pill">Security: bcrypt + JWT</span>
+    </p>
+
+    <h2>1. Project Overview</h2>
+    <p>The project helps a user track job applications. A user can create an account, sign in, add job applications, edit them, delete them, filter them, and see analytics like total applications, interview count, offers, and charts.</p>
+
+    <h3>Main features</h3>
+    <ul>
+      <li>User authentication with password hashing and JWT.</li>
+      <li>Create, read, update, and delete job applications.</li>
+      <li>Dashboard stats and analytics charts.</li>
+      <li>Demo mode if backend is not available.</li>
+      <li>Responsive UI with sidebar, modal, cards, and filters.</li>
+    </ul>
+
+    <h3>Folder structure</h3>
+    <table>
+      <tr>
+        <th>Path</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>frontend/index.html</code></td>
+        <td>Main UI structure. Contains login page, register page, dashboard, jobs page, analytics page, modal, and toast container.</td>
+      </tr>
+      <tr>
+        <td><code>frontend/style.css</code></td>
+        <td>All styling for layout, cards, sidebar, modal, charts, buttons, responsive design, and colors.</td>
+      </tr>
+      <tr>
+        <td><code>frontend/app.js</code></td>
+        <td>Main frontend logic. Handles authentication flow, page switching, rendering, filtering, CRUD calls, demo mode, modal logic, and charts.</td>
+      </tr>
+      <tr>
+        <td><code>backend/server.js</code></td>
+        <td>Express server, MongoDB connection, Mongoose schemas, authentication middleware, and all API routes.</td>
+      </tr>
+      <tr>
+        <td><code>backend/package.json</code></td>
+        <td>Lists backend dependencies and scripts.</td>
+      </tr>
+    </table>
+
+    <h2>2. End-to-End Working Flow</h2>
+    <ol>
+      <li>User opens the app in the browser.</li>
+      <li>Frontend loads <code>index.html</code>, styles from <code>style.css</code>, and behavior from <code>app.js</code>.</li>
+      <li>If user already has token and user data in <code>localStorage</code>, the app enters the main application.</li>
+      <li>If user logs in or registers, frontend sends request to backend API.</li>
+      <li>Backend validates request, accesses MongoDB, then returns JSON data.</li>
+      <li>Frontend stores token and user info in <code>localStorage</code>.</li>
+      <li>Frontend fetches job data and renders dashboard, jobs list, and analytics.</li>
+      <li>Every protected API request sends <code>Authorization: Bearer token</code>.</li>
+    </ol>
+
+    <div class="box">
+      <strong>Important viva sentence:</strong> The frontend is responsible for UI and user interaction, while the backend is responsible for authentication, validation, database access, and secured CRUD operations.
+    </div>
+
+    <h2>3. Frontend: index.html Explained</h2>
+    <p><code>index.html</code> is the skeleton of the app. It contains all visible sections, and JavaScript shows or hides them as needed.</p>
+
+    <h3>Important sections in index.html</h3>
+    <table>
+      <tr>
+        <th>Section</th>
+        <th>What it does</th>
+      </tr>
+      <tr>
+        <td>Mobile menu button</td>
+        <td>Calls <code>toggleSidebar()</code> so sidebar can open on small screens.</td>
+      </tr>
+      <tr>
+        <td><code>#authWrap</code></td>
+        <td>Wrapper for authentication area. Contains login and register screens.</td>
+      </tr>
+      <tr>
+        <td><code>#loginPage</code></td>
+        <td>Login form with email, password, and Sign In button.</td>
+      </tr>
+      <tr>
+        <td><code>#registerPage</code></td>
+        <td>Registration form with name, email, password, and Create Account button.</td>
+      </tr>
+      <tr>
+        <td><code>#appWrap</code></td>
+        <td>Main application wrapper shown after login.</td>
+      </tr>
+      <tr>
+        <td>Sidebar</td>
+        <td>Contains navigation items: Dashboard, Applications, Analytics, plus sign out button.</td>
+      </tr>
+      <tr>
+        <td><code>#dashPage</code></td>
+        <td>Dashboard page with overview stats, funnel, and recent applications.</td>
+      </tr>
+      <tr>
+        <td><code>#jobsPage</code></td>
+        <td>Applications page with search, filters, sort controls, and all job cards.</td>
+      </tr>
+      <tr>
+        <td><code>#analyticsPage</code></td>
+        <td>Analytics page with summary stats, 3 charts, and recent activity list.</td>
+      </tr>
+      <tr>
+        <td><code>#jobModal</code></td>
+        <td>Modal used for both adding and editing job applications.</td>
+      </tr>
+      <tr>
+        <td><code>#toastContainer</code></td>
+        <td>Holds toast messages like success, error, or info alerts.</td>
+      </tr>
+    </table>
+
+    <h3>Why inline onclick is used here</h3>
+    <p>This project uses inline event handlers like <code>onclick="doLogin()"</code>. This is easy for beginners to understand because the HTML directly shows which function runs on click. In bigger production apps, developers usually attach events from JavaScript instead.</p>
+
+    <h2>4. Frontend: style.css Explained</h2>
+    <p><code>style.css</code> controls the visual design. It does not change data or logic. It only decides how the app looks.</p>
+
+    <h3>Important CSS parts</h3>
+    <table>
+      <tr>
+        <th>Section</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>:root</code> variables</td>
+        <td>Stores theme colors, spacing, border radius, shadows, and reusable design tokens.</td>
+      </tr>
+      <tr>
+        <td>Layout classes</td>
+        <td>Create app structure with sidebar on left and main content on right.</td>
+      </tr>
+      <tr>
+        <td>Auth styles</td>
+        <td>Design login and register cards.</td>
+      </tr>
+      <tr>
+        <td>Button styles</td>
+        <td>Reusable button system: normal, ghost, danger, small buttons.</td>
+      </tr>
+      <tr>
+        <td>Job card styles</td>
+        <td>Styles each application card and expanded detail section.</td>
+      </tr>
+      <tr>
+        <td>Modal styles</td>
+        <td>Controls overlay, card box, scroll behavior, and close button.</td>
+      </tr>
+      <tr>
+        <td>Toast styles</td>
+        <td>Displays success and error notifications in the bottom-right corner.</td>
+      </tr>
+      <tr>
+        <td>Responsive media query</td>
+        <td>Hides sidebar on mobile and shows menu button.</td>
+      </tr>
+    </table>
+
+    <h3>What to say in viva about CSS</h3>
+    <ul>
+      <li>The UI uses CSS custom properties for consistent theming.</li>
+      <li>The layout uses flexbox and grid for responsive structure.</li>
+      <li>Separate classes are used for card states, button variants, and status badges.</li>
+      <li>The app is mobile-friendly because of the media query for screen widths below 768px.</li>
+    </ul>
+
+    <h2>5. Frontend JavaScript: app.js Complete Explanation</h2>
+    <p><code>app.js</code> is the brain of the frontend. It stores data, talks to backend APIs, reacts to button clicks, updates the UI, and builds charts.</p>
+
+    <h3>5.1 Global constants and state</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td><code>API</code></td>
+        <td>Base URL of backend server, currently <code>http://localhost:5000</code>.</td>
+      </tr>
+      <tr>
+        <td><code>STATUS_OPTIONS</code></td>
+        <td>List of valid statuses shown in dropdowns.</td>
+      </tr>
+      <tr>
+        <td><code>PRIORITY_OPTIONS</code></td>
+        <td>List of valid priorities shown in dropdowns.</td>
+      </tr>
+      <tr>
+        <td><code>allJobs</code></td>
+        <td>Stores all job data currently loaded on frontend.</td>
+      </tr>
+      <tr>
+        <td><code>editingJobId</code></td>
+        <td>Stores which job is currently being edited in the modal.</td>
+      </tr>
+      <tr>
+        <td><code>chartInstances</code></td>
+        <td>Stores Chart.js chart objects so old charts can be destroyed before redrawing.</td>
+      </tr>
+    </table>
+
+    <h3>5.2 Utility functions</h3>
+
+    <h4><code>toast(msg, type)</code></h4>
+    <ul>
+      <li><strong>Purpose:</strong> Shows a temporary message to user.</li>
+      <li><strong>Input:</strong> Message text and type such as success, error, or info.</li>
+      <li><strong>How it works:</strong> Creates a new div, adds it to toast container, then removes it after a timeout.</li>
+      <li><strong>Why important:</strong> Gives user feedback after actions like save, delete, or login failure.</li>
+    </ul>
+
+    <h4><code>getToken()</code></h4>
+    <ul>
+      <li>Reads JWT token from <code>localStorage</code>.</li>
+      <li>Used whenever frontend needs to call protected APIs.</li>
+    </ul>
+
+    <h4><code>getUser()</code></h4>
+    <ul>
+      <li>Reads logged-in user data from <code>localStorage</code>.</li>
+      <li>Used to show name, email, avatar initials, and greeting.</li>
+    </ul>
+
+    <h4><code>authHeaders()</code></h4>
+    <ul>
+      <li>Builds request headers for authenticated API calls.</li>
+      <li>Sends JSON content type and bearer token.</li>
+    </ul>
+
+    <h4><code>escHtml(str)</code> and <code>escAttr(str)</code></h4>
+    <ul>
+      <li>Escape special characters before inserting user data into HTML.</li>
+      <li>These functions help prevent broken markup and reduce XSS risk.</li>
+    </ul>
+
+    <h4><code>encodeInlineJob(job)</code></h4>
+    <ul>
+      <li>Converts a job object into a safe string so it can be used inside inline HTML button handlers.</li>
+      <li>This is used by the Edit button.</li>
+    </ul>
+
+    <h3>5.3 Navigation and page switching</h3>
+
+    <h4><code>showPage(id)</code></h4>
+    <ul>
+      <li>Used in authentication area.</li>
+      <li>Hides login and register sections, then shows the selected page.</li>
+      <li>Example: switching from login to register page.</li>
+    </ul>
+
+    <h4><code>switchPage(id, el)</code></h4>
+    <ul>
+      <li>Used in main application area.</li>
+      <li>Changes active page between Dashboard, Applications, and Analytics.</li>
+      <li>Also updates active sidebar item.</li>
+      <li>If Analytics page is opened, it calls <code>renderAnalytics()</code>.</li>
+      <li>If Jobs page is opened, it calls <code>filterJobs()</code>.</li>
+      <li>If Dashboard page is opened, it calls <code>renderDash()</code>.</li>
+    </ul>
+
+    <h4><code>toggleSidebar()</code></h4>
+    <ul>
+      <li>Opens or closes sidebar on smaller screens.</li>
+      <li>Used by the mobile menu button.</li>
+    </ul>
+
+    <h3>5.4 Authentication functions</h3>
+
+    <h4><code>doLogin()</code></h4>
+    <ul>
+      <li>Reads email and password from form.</li>
+      <li>Validates that fields are not empty.</li>
+      <li>Sends <code>POST /login</code> request to backend.</li>
+      <li>If login succeeds, saves token and user data in <code>localStorage</code>, then calls <code>initApp()</code>.</li>
+      <li>If backend is unreachable, it starts demo mode.</li>
+    </ul>
+
+    <p><strong>Viva point:</strong> Demo mode is a fallback so the UI can still be demonstrated even if backend server or database is not running.</p>
+
+    <h4><code>doRegister()</code></h4>
+    <ul>
+      <li>Reads full name, email, and password.</li>
+      <li>Checks all fields are filled and password length is at least 6.</li>
+      <li>Sends <code>POST /register</code> request.</li>
+      <li>If successful, saves token and user then opens main app.</li>
+    </ul>
+
+    <h4><code>doLogout()</code></h4>
+    <ul>
+      <li>Clears token and user from <code>localStorage</code>.</li>
+      <li>Clears frontend job state.</li>
+      <li>Shows login page again.</li>
+    </ul>
+
+    <h4><code>demoMode()</code></h4>
+    <ul>
+      <li>Creates fake demo user and sample job data directly in frontend.</li>
+      <li>Used when backend is unavailable.</li>
+      <li>Allows viva or demo presentation without database dependency.</li>
+    </ul>
+
+    <h3>5.5 App initialization</h3>
+
+    <h4><code>initApp(isDemo = false)</code></h4>
+    <ul>
+      <li>Switches UI from auth pages to main app.</li>
+      <li>Reads user from storage and displays initials, name, email, and greeting.</li>
+      <li>If app is in demo mode, it directly renders dashboard and jobs.</li>
+      <li>Otherwise, it loads jobs from backend using <code>loadJobs()</code>.</li>
+    </ul>
+
+    <h4><code>window.onload</code></h4>
+    <ul>
+      <li>Runs automatically when page fully loads.</li>
+      <li>If token and user already exist, it restores the session.</li>
+      <li>Adds modal close behavior for overlay click.</li>
+      <li>Adds keyboard shortcuts:
+        <ul>
+          <li><code>N</code> opens Add Application modal.</li>
+          <li><code>Escape</code> closes modal.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>5.6 Job API functions</h3>
+
+    <h4><code>loadJobs()</code></h4>
+    <ul>
+      <li>Calls backend <code>GET /jobs</code>.</li>
+      <li>Stores response in <code>allJobs</code>.</li>
+      <li>Then renders dashboard and job list.</li>
+    </ul>
+
+    <h4><code>saveJob(data)</code></h4>
+    <ul>
+      <li>Handles both create and update logic.</li>
+      <li>If <code>editingJobId</code> exists, it sends <code>PUT /jobs/:id</code>.</li>
+      <li>If not, it sends <code>POST /jobs</code>.</li>
+      <li>In demo mode, it updates local array instead of calling backend.</li>
+    </ul>
+
+    <h4><code>deleteJob(id)</code></h4>
+    <ul>
+      <li>Asks for confirmation.</li>
+      <li>In demo mode, removes item locally.</li>
+      <li>In real mode, sends <code>DELETE /jobs/:id</code>.</li>
+    </ul>
+
+    <h4><code>quickUpdateStatus(id, status)</code></h4>
+    <ul>
+      <li>Quickly changes a job's status from dropdown in expanded card.</li>
+      <li>Updates frontend and dashboard immediately.</li>
+      <li>In live mode, also sends backend update.</li>
+    </ul>
+
+    <h4><code>quickUpdate(id, field, value)</code></h4>
+    <ul>
+      <li>Generic update function used for simple field updates like priority.</li>
+      <li>Useful because the same logic can update different fields without separate functions.</li>
+    </ul>
+
+    <h3>5.7 Modal functions</h3>
+
+    <h4><code>openAddModal()</code></h4>
+    <ul>
+      <li>Prepares modal for creating a new job.</li>
+      <li>Clears all form inputs.</li>
+      <li>Sets default status to Applied and priority to Medium.</li>
+    </ul>
+
+    <h4><code>openEditModal(job)</code></h4>
+    <ul>
+      <li>Prepares modal for editing an existing job.</li>
+      <li>Fills form fields using selected job data.</li>
+      <li>Stores job id in <code>editingJobId</code>.</li>
+    </ul>
+
+    <h4><code>closeModal()</code></h4>
+    <ul>
+      <li>Removes modal open class so popup disappears.</li>
+    </ul>
+
+    <h4><code>submitJob()</code></h4>
+    <ul>
+      <li>Collects all form values from modal.</li>
+      <li>Validates that company and role are present.</li>
+      <li>Calls <code>saveJob()</code>.</li>
+      <li>On success, closes modal, refreshes UI, and shows toast.</li>
+    </ul>
+
+    <h3>5.8 Rendering functions</h3>
+
+    <h4><code>renderDash()</code></h4>
+    <ul>
+      <li>Calculates total applications, interview count, offers, rejected jobs, and interview rate.</li>
+      <li>Builds stat cards dynamically.</li>
+      <li>Builds small funnel view for Applied, Interview, and Offer.</li>
+      <li>Shows recent jobs section.</li>
+    </ul>
+
+    <h4><code>renderJobs(jobs)</code></h4>
+    <ul>
+      <li>Renders job cards list for Applications page.</li>
+      <li>Also updates count text such as "8 applications".</li>
+      <li>Shows empty state if list is empty.</li>
+    </ul>
+
+    <h4><code>jobCardHTML(job)</code></h4>
+    <ul>
+      <li>Returns HTML string for a single job card plus its expandable detail section.</li>
+      <li>This contains company, role, status, date, quick update dropdowns, Edit button, Open Listing button, and Remove button.</li>
+    </ul>
+
+    <h4><code>toggleJobDetail(id)</code></h4>
+    <ul>
+      <li>Expands or collapses details of a job card.</li>
+      <li>Also closes any other expanded job card first, so only one stays open at a time.</li>
+    </ul>
+
+    <h3>5.9 Filter and sorting functions</h3>
+
+    <h4><code>filterJobs()</code></h4>
+    <ul>
+      <li>Reads search text, status filter, priority filter, and sort order from controls.</li>
+      <li>Filters data from <code>allJobs</code>.</li>
+      <li>Then sorts and sends result to <code>renderJobs()</code>.</li>
+    </ul>
+
+    <h4><code>sortJobs(jobs, sort)</code></h4>
+    <ul>
+      <li>Sorts by date or company name.</li>
+      <li>Supports both ascending and descending order.</li>
+    </ul>
+
+    <h3>5.10 Analytics functions</h3>
+
+    <h4><code>renderAnalytics()</code></h4>
+    <ul>
+      <li>Builds summary values like total jobs, this week count, offers, and progress rate.</li>
+      <li>Groups jobs by status, priority, and day.</li>
+      <li>Calls <code>buildChart()</code> three times to create graphs.</li>
+      <li>Builds recent activity timeline.</li>
+    </ul>
+
+    <h4><code>buildChart(id, type, data, options)</code></h4>
+    <ul>
+      <li>Reusable helper for Chart.js.</li>
+      <li>Destroys previous chart instance before drawing a new one.</li>
+      <li>This prevents duplicate charts and memory issues.</li>
+    </ul>
+
+    <div class="box">
+      <strong>Most likely frontend viva question:</strong> Why are render functions separate from API functions?<br>
+      Because API functions fetch or update data, while render functions only update the UI. This separation makes code easier to understand and maintain.
+    </div>
+
+    <h2>6. Backend: server.js Complete Explanation</h2>
+    <p>The backend is built using Express and MongoDB. It exposes REST APIs for authentication and job management.</p>
+
+    <h3>6.1 Imports and setup</h3>
+    <table>
+      <tr>
+        <th>Code part</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>express</code></td>
+        <td>Creates HTTP server and routes.</td>
+      </tr>
+      <tr>
+        <td><code>mongoose</code></td>
+        <td>Connects Node.js app to MongoDB and defines schemas.</td>
+      </tr>
+      <tr>
+        <td><code>cors</code></td>
+        <td>Allows frontend to send requests to backend.</td>
+      </tr>
+      <tr>
+        <td><code>bcryptjs</code></td>
+        <td>Hashes passwords securely.</td>
+      </tr>
+      <tr>
+        <td><code>jsonwebtoken</code></td>
+        <td>Creates and verifies JWT tokens.</td>
+      </tr>
+      <tr>
+        <td><code>path</code></td>
+        <td>Helps serve frontend static files.</td>
+      </tr>
+    </table>
+
+    <h4>Server initialization</h4>
+    <ul>
+      <li><code>const app = express()</code> creates the Express app.</li>
+      <li><code>JWT_SECRET</code> is used to sign and verify tokens.</li>
+      <li><code>app.use(cors({ origin: "*" }))</code> allows requests from any origin.</li>
+      <li><code>app.use(express.json())</code> parses incoming JSON request bodies.</li>
+      <li><code>app.use(express.static(...))</code> serves frontend files.</li>
+    </ul>
+
+    <h3>6.2 Database connection</h3>
+    <p>The code connects to MongoDB using <code>mongoose.connect()</code>. If no environment variable is set, it uses local database <code>mongodb://localhost:27017/jobtracker</code>.</p>
+    <p><strong>Why Mongoose is used:</strong> It provides schemas, validation, models, query methods, and easier MongoDB interaction.</p>
+
+    <h4>How MongoDB connection works in this project</h4>
+    <ul>
+      <li>The backend reads <code>process.env.MONGO_URI</code>.</li>
+      <li>If <code>MONGO_URI</code> is not provided, it falls back to <code>mongodb://localhost:27017/jobtracker</code>.</li>
+      <li>When connection succeeds, the terminal prints <code>MongoDB connected</code>.</li>
+      <li>If connection fails, the terminal prints <code>DB error:</code> and the related error object.</li>
+    </ul>
+
+    <h4>What <code>mongodb://localhost:27017/jobtracker</code> means</h4>
+    <ul>
+      <li><code>mongodb://</code> is the MongoDB connection protocol.</li>
+      <li><code>localhost</code> means the database server is running on the same machine.</li>
+      <li><code>27017</code> is MongoDB's default port.</li>
+      <li><code>jobtracker</code> is the database name used by this project.</li>
+    </ul>
+
+    <h4>Local MongoDB vs MongoDB Atlas</h4>
+    <table>
+      <tr>
+        <th>Option</th>
+        <th>How it is used here</th>
+      </tr>
+      <tr>
+        <td>Local MongoDB</td>
+        <td>Good for development on one machine. The project works directly with <code>mongodb://localhost:27017/jobtracker</code>.</td>
+      </tr>
+      <tr>
+        <td>MongoDB Atlas</td>
+        <td>Good for cloud hosting or shared access. You replace <code>MONGO_URI</code> with your Atlas connection string.</td>
+      </tr>
+    </table>
+
+    <h3>6.3 Mongoose schemas and models</h3>
+
+    <h4>User schema</h4>
+    <ul>
+      <li><code>name</code>: required string</li>
+      <li><code>email</code>: required, unique, lowercased, trimmed</li>
+      <li><code>password</code>: required hashed password</li>
+      <li><code>timestamps: true</code>: automatically adds <code>createdAt</code> and <code>updatedAt</code></li>
+    </ul>
+
+    <h4>Job schema</h4>
+    <ul>
+      <li><code>userId</code>: links each job to a specific user</li>
+      <li><code>company</code>, <code>role</code>: required fields</li>
+      <li><code>status</code>: enum with fixed valid values</li>
+      <li><code>priority</code>: enum with Low, Medium, High</li>
+      <li>Other optional fields: location, salary, url, notes, contactName, contactEmail, deadline, tags</li>
+      <li><code>dateApplied</code>: default current date</li>
+    </ul>
+
+    <p><strong>Important viva point:</strong> Enums are used so invalid status or priority values cannot be stored in the database.</p>
+
+    <h3>6.3.1 Collections and document structure</h3>
+    <p>MongoDB stores data in collections, and each record inside a collection is called a document.</p>
+
+    <table>
+      <tr>
+        <th>Collection</th>
+        <th>Stored data</th>
+      </tr>
+      <tr>
+        <td><code>users</code></td>
+        <td>Account data such as name, email, hashed password, and timestamps.</td>
+      </tr>
+      <tr>
+        <td><code>jobs</code></td>
+        <td>Job applications with company, role, status, priority, notes, owner id, and timestamps.</td>
+      </tr>
+    </table>
+
+    <h4>Example user document</h4>
+    <pre><code>{
+  "_id": "662a0f...",
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "password": "$2a$10$hashedPassword",
+  "createdAt": "2026-04-24T17:00:00.000Z",
+  "updatedAt": "2026-04-24T17:00:00.000Z"
+}</code></pre>
+
+    <h4>Example job document</h4>
+    <pre><code>{
+  "_id": "662a10...",
+  "userId": "662a0f...",
+  "company": "Google",
+  "role": "Software Engineer",
+  "status": "Interview",
+  "priority": "High",
+  "location": "Remote",
+  "notes": "Phone screen completed",
+  "dateApplied": "2026-04-24T17:10:00.000Z",
+  "createdAt": "2026-04-24T17:10:00.000Z",
+  "updatedAt": "2026-04-24T17:10:00.000Z"
+}</code></pre>
+
+    <h4>Why <code>userId</code> is important</h4>
+    <ul>
+      <li>It links each job application to the user who created it.</li>
+      <li>It is the main reason one user cannot see another user's job records.</li>
+      <li>Protected job queries always filter using the current user's id.</li>
+    </ul>
+
+    <h3>6.3.2 Why MongoDB fits this project</h3>
+    <ul>
+      <li>Job application data is document-shaped and flexible.</li>
+      <li>Different jobs may have some optional fields and some missing fields, which MongoDB handles well.</li>
+      <li>Mongoose schemas still allow structure and validation even though MongoDB itself is flexible.</li>
+      <li>This combination makes development fast while keeping data reasonably consistent.</li>
+    </ul>
+
+    <h3>6.4 Authentication middleware</h3>
+
+    <h4><code>auth(req, res, next)</code></h4>
+    <ul>
+      <li>Reads token from <code>Authorization</code> header.</li>
+      <li>If token is missing, returns 401 Unauthorized.</li>
+      <li>If token is present, verifies it using <code>jwt.verify()</code>.</li>
+      <li>If valid, saves decoded user data in <code>req.user</code>.</li>
+      <li>Calls <code>next()</code> to continue to protected route.</li>
+    </ul>
+
+    <p><strong>Why it matters:</strong> It protects job routes so one user cannot see or edit another user's jobs.</p>
+
+    <h3>6.5 Route-by-route explanation</h3>
+
+    <table>
+      <tr>
+        <th>Route</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>GET /</code></td>
+        <td>Simple health check route. Returns basic JSON saying server is running.</td>
+      </tr>
+      <tr>
+        <td><code>POST /register</code></td>
+        <td>Creates a new user account after validation and password hashing.</td>
+      </tr>
+      <tr>
+        <td><code>POST /login</code></td>
+        <td>Checks email and password, then returns JWT token.</td>
+      </tr>
+      <tr>
+        <td><code>GET /jobs</code></td>
+        <td>Returns current user's jobs. Supports filters and search.</td>
+      </tr>
+      <tr>
+        <td><code>POST /jobs</code></td>
+        <td>Creates a new job application for logged-in user.</td>
+      </tr>
+      <tr>
+        <td><code>PUT /jobs/:id</code></td>
+        <td>Updates one existing job if it belongs to current user.</td>
+      </tr>
+      <tr>
+        <td><code>DELETE /jobs/:id</code></td>
+        <td>Deletes one job if it belongs to current user.</td>
+      </tr>
+      <tr>
+        <td><code>GET /stats</code></td>
+        <td>Returns aggregate statistics for current user's jobs.</td>
+      </tr>
+    </table>
+
+    <h4><code>POST /register</code> detailed logic</h4>
+    <ol>
+      <li>Read <code>name</code>, <code>email</code>, and <code>password</code> from request body.</li>
+      <li>Validate all fields are present.</li>
+      <li>Validate password length.</li>
+      <li>Check if user already exists.</li>
+      <li>Hash password with bcrypt.</li>
+      <li>Create user in MongoDB.</li>
+      <li>Generate JWT token.</li>
+      <li>Return token and safe user info.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route inserts a new document into the <code>users</code> collection.</p>
+
+    <h4><code>POST /login</code> detailed logic</h4>
+    <ol>
+      <li>Read email and password.</li>
+      <li>Find user by email.</li>
+      <li>Compare entered password with hashed password using bcrypt.</li>
+      <li>If valid, generate JWT token.</li>
+      <li>Return token and user data.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route reads from the <code>users</code> collection but does not create a new record.</p>
+
+    <h4><code>GET /jobs</code> detailed logic</h4>
+    <ol>
+      <li>First passes through <code>auth</code> middleware.</li>
+      <li>Build filter object using logged-in user's id.</li>
+      <li>Optionally add status, priority, and search conditions.</li>
+      <li>Query MongoDB using <code>Job.find(filter)</code>.</li>
+      <li>Sort result and return as JSON.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route reads documents from the <code>jobs</code> collection that belong only to the current user.</p>
+
+    <h4><code>POST /jobs</code> detailed logic</h4>
+    <ol>
+      <li>Protected route, so token is required.</li>
+      <li>Checks company and role are present.</li>
+      <li>Creates a job document with <code>userId</code> from token.</li>
+      <li>Returns newly created job.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route inserts a new document into the <code>jobs</code> collection.</p>
+
+    <h4><code>PUT /jobs/:id</code> detailed logic</h4>
+    <ol>
+      <li>Protected route.</li>
+      <li>Searches by both job id and user id.</li>
+      <li>This ensures a user can update only their own jobs.</li>
+      <li><code>runValidators: true</code> makes schema validations run during update.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route updates one matching document in the <code>jobs</code> collection.</p>
+
+    <h4><code>DELETE /jobs/:id</code> detailed logic</h4>
+    <ol>
+      <li>Protected route.</li>
+      <li>Deletes only if job belongs to logged-in user.</li>
+      <li>Returns confirmation JSON.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route removes one matching document from the <code>jobs</code> collection.</p>
+
+    <h4><code>GET /stats</code> detailed logic</h4>
+    <ol>
+      <li>Reads all jobs of the current user.</li>
+      <li>Counts jobs by status.</li>
+      <li>Counts how many were applied to in the last 30 days.</li>
+      <li>Returns aggregate stats object.</li>
+    </ol>
+
+    <p><strong>Database effect:</strong> This route reads multiple job documents, then computes statistics in backend memory.</p>
+
+    <h3>6.6 Server start</h3>
+    <p>The backend runs on port <code>5000</code> by default. <code>app.listen(PORT)</code> starts the server and begins accepting requests.</p>
+
+    <h2>7. Security Concepts Used</h2>
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>How this project uses it</th>
+      </tr>
+      <tr>
+        <td>Password hashing</td>
+        <td>Passwords are hashed with bcrypt before storage. Plain passwords are never stored in database.</td>
+      </tr>
+      <tr>
+        <td>JWT authentication</td>
+        <td>Backend issues token after login/register. Frontend sends that token on protected requests.</td>
+      </tr>
+      <tr>
+        <td>Protected routes</td>
+        <td><code>auth</code> middleware blocks unauthorized access.</td>
+      </tr>
+      <tr>
+        <td>Ownership check</td>
+        <td>Job updates and deletes are filtered by both <code>_id</code> and <code>userId</code>.</td>
+      </tr>
+      <tr>
+        <td>Input validation</td>
+        <td>Backend checks required fields and schema enums before data is stored.</td>
+      </tr>
+      <tr>
+        <td>Frontend escaping</td>
+        <td>User-provided text is escaped before being injected into HTML.</td>
+      </tr>
+    </table>
+
+    <h2>8. MongoDB Viva Notes</h2>
+    <table>
+      <tr>
+        <th>Question</th>
+        <th>Good answer</th>
+      </tr>
+      <tr>
+        <td>Why did you use MongoDB in this project?</td>
+        <td>Because the data is naturally document-based, some job fields are optional, and MongoDB with Mongoose makes it easy to build flexible but validated records.</td>
+      </tr>
+      <tr>
+        <td>What collections are used?</td>
+        <td>The project mainly uses <code>users</code> and <code>jobs</code> collections.</td>
+      </tr>
+      <tr>
+        <td>How are users and jobs related?</td>
+        <td>Each job document stores a <code>userId</code> field that points to the user who owns that job.</td>
+      </tr>
+      <tr>
+        <td>What is the role of Mongoose here?</td>
+        <td>Mongoose defines schemas, validations, defaults, enums, timestamps, and model methods for working with MongoDB documents.</td>
+      </tr>
+      <tr>
+        <td>What happens if MongoDB is not running?</td>
+        <td>The backend cannot store or fetch real data, so auth and CRUD routes fail. The frontend can still be shown in demo mode.</td>
+      </tr>
+      <tr>
+        <td>What is the default database name?</td>
+        <td>The default database name is <code>jobtracker</code>.</td>
+      </tr>
+    </table>
+
+    <h2>9. Important Design Decisions</h2>
+    <div class="two-col">
+      <div class="box">
+        <h3>Why localStorage?</h3>
+        <p>It keeps user session active after page refresh. Token and basic user data are stored in browser memory that persists until removed.</p>
+      </div>
+      <div class="box">
+        <h3>Why demo mode?</h3>
+        <p>It allows the application to be shown even when backend or database is not running. That is helpful in viva and portfolio demos.</p>
+      </div>
+      <div class="box">
+        <h3>Why one file for frontend logic?</h3>
+        <p>It keeps the project simple and beginner-friendly, though larger apps should separate modules.</p>
+      </div>
+      <div class="box">
+        <h3>Why Chart.js?</h3>
+        <p>It gives quick and visually clear charts without needing to build chart logic manually.</p>
+      </div>
+    </div>
+
+    <h2>10. Possible Weak Points You Can Honestly Mention</h2>
+    <ul>
+      <li>The project is easy to understand because logic is centralized, but that also means <code>app.js</code> and <code>server.js</code> are becoming large.</li>
+      <li>CORS is currently open to all origins. In production it should be restricted.</li>
+      <li>Frontend uses inline event handlers, which is okay for small projects but less scalable for larger apps.</li>
+      <li>Token is stored in localStorage; for stronger production security, HTTP-only cookies are often preferred.</li>
+      <li>There are no automated tests yet.</li>
+    </ul>
+
+    <p><strong>Good viva behavior:</strong> If the examiner asks for limitations, do not say "there are no problems." Instead say you deliberately chose a simple architecture for clarity and speed, and mention how you would improve it in a production version.</p>
+
+    <h2>11. How to Explain This Project in 1 Minute</h2>
+    <div class="box">
+      <p>JobLens is a full-stack job application tracker built using HTML, CSS, and JavaScript on the frontend, and Node.js, Express, and MongoDB on the backend. It allows users to register and log in securely using bcrypt password hashing and JWT-based authentication. After login, users can add, edit, delete, filter, and track job applications. The dashboard shows key statistics, and the analytics section visualizes progress using charts. I also added demo mode so the project can still be shown even if the backend is not running.</p>
+    </div>
+
+    <h2>12. Common Viva Questions and Ready Answers</h2>
+    <table>
+      <tr>
+        <th>Question</th>
+        <th>Short answer</th>
+      </tr>
+      <tr>
+        <td>What problem does your project solve?</td>
+        <td>It helps users organize and track their job applications and progress.</td>
+      </tr>
+      <tr>
+        <td>Why did you use MongoDB?</td>
+        <td>Because the data is document-based, flexible, and easy to model with Mongoose schemas.</td>
+      </tr>
+      <tr>
+        <td>Why use JWT?</td>
+        <td>JWT allows stateless authentication, so the server can verify user identity on each request without storing session data.</td>
+      </tr>
+      <tr>
+        <td>Why use bcrypt?</td>
+        <td>It securely hashes passwords so plain passwords are never saved.</td>
+      </tr>
+      <tr>
+        <td>What is middleware?</td>
+        <td>Middleware is a function that runs before the final route handler. Here it is used for authentication.</td>
+      </tr>
+      <tr>
+        <td>What is CRUD?</td>
+        <td>Create, Read, Update, Delete. This project supports all four operations on jobs.</td>
+      </tr>
+      <tr>
+        <td>How do you ensure one user cannot access another user's jobs?</td>
+        <td>I verify JWT token and then query jobs by both job id and the logged-in user's id.</td>
+      </tr>
+      <tr>
+        <td>What is the role of Mongoose schema?</td>
+        <td>It defines the structure, types, defaults, and validation rules for MongoDB documents.</td>
+      </tr>
+      <tr>
+        <td>How is the dashboard updated?</td>
+        <td>Frontend stores jobs in <code>allJobs</code> and re-renders stats and cards whenever job data changes.</td>
+      </tr>
+      <tr>
+        <td>What happens if backend is down?</td>
+        <td>The app can enter demo mode and use sample data for UI demonstration.</td>
+      </tr>
+    </table>
+
+    <h2>13. Function-by-Function Quick Revision Sheet</h2>
+    <table>
+      <tr>
+        <th>Function</th>
+        <th>Remember it as</th>
+      </tr>
+      <tr><td><code>toast</code></td><td>show message</td></tr>
+      <tr><td><code>getToken</code></td><td>read token</td></tr>
+      <tr><td><code>getUser</code></td><td>read user</td></tr>
+      <tr><td><code>authHeaders</code></td><td>prepare auth request headers</td></tr>
+      <tr><td><code>showPage</code></td><td>switch login/register screen</td></tr>
+      <tr><td><code>switchPage</code></td><td>switch main app page</td></tr>
+      <tr><td><code>toggleSidebar</code></td><td>open mobile sidebar</td></tr>
+      <tr><td><code>doLogin</code></td><td>login user</td></tr>
+      <tr><td><code>doRegister</code></td><td>create user account</td></tr>
+      <tr><td><code>doLogout</code></td><td>clear session</td></tr>
+      <tr><td><code>demoMode</code></td><td>load sample app data</td></tr>
+      <tr><td><code>initApp</code></td><td>start main application</td></tr>
+      <tr><td><code>loadJobs</code></td><td>fetch jobs from backend</td></tr>
+      <tr><td><code>saveJob</code></td><td>create or update job</td></tr>
+      <tr><td><code>deleteJob</code></td><td>remove job</td></tr>
+      <tr><td><code>quickUpdateStatus</code></td><td>change status fast</td></tr>
+      <tr><td><code>quickUpdate</code></td><td>generic field update</td></tr>
+      <tr><td><code>openAddModal</code></td><td>prepare add form</td></tr>
+      <tr><td><code>openEditModal</code></td><td>prepare edit form</td></tr>
+      <tr><td><code>closeModal</code></td><td>hide popup</td></tr>
+      <tr><td><code>submitJob</code></td><td>read form and save</td></tr>
+      <tr><td><code>renderDash</code></td><td>build dashboard</td></tr>
+      <tr><td><code>renderJobs</code></td><td>build jobs list</td></tr>
+      <tr><td><code>jobCardHTML</code></td><td>generate one job card</td></tr>
+      <tr><td><code>toggleJobDetail</code></td><td>expand/collapse details</td></tr>
+      <tr><td><code>filterJobs</code></td><td>search + filter jobs</td></tr>
+      <tr><td><code>sortJobs</code></td><td>sort jobs</td></tr>
+      <tr><td><code>renderAnalytics</code></td><td>build charts and activity list</td></tr>
+      <tr><td><code>buildChart</code></td><td>draw chart safely</td></tr>
+      <tr><td><code>auth middleware</code></td><td>protect routes</td></tr>
+    </table>
+
+    <h2>14. Final Last-Night Revision Notes</h2>
+    <ul>
+      <li><span class="good">Remember the stack:</span> HTML, CSS, JS, Node.js, Express, MongoDB, Mongoose, bcrypt, JWT, Chart.js.</li>
+      <li><span class="good">Remember the flow:</span> login/register -> token stored -> authenticated requests -> jobs fetched -> UI rendered.</li>
+      <li><span class="good">Remember security:</span> hashed passwords, JWT auth, protected routes, ownership checks.</li>
+      <li><span class="good">Remember frontend data:</span> everything is mainly driven by the <code>allJobs</code> array.</li>
+      <li><span class="warn">If asked about improvement:</span> split frontend and backend into modules, restrict CORS, add tests, and use HTTP-only cookies.</li>
+    </ul>
+
+    <p class="small">Prepared from the current project codebase, including the fixed frontend script version.</p>
+  </div>
+</body>
+</html>

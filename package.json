@@ -1,0 +1,25 @@
+{
+  "name": "joblens",
+  "version": "2.0.0",
+  "description": "Full-stack job application tracker with authentication, CRUD workflows, and analytics.",
+  "private": true,
+  "scripts": {
+    "install:backend": "npm install --prefix backend",
+    "start": "node backend/server.js",
+    "dev": "npm run dev --prefix backend",
+    "seed": "npm run seed --prefix backend"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
