@@ -30,6 +30,11 @@ https://your-joblens-site.onrender.com
 - Authentication: JWT and bcryptjs
 - Charts: Chart.js
 
+## Collaborators
+
+- Rohan Dhiman - Project owner and developer
+- Add teammate names here after inviting them to the GitHub repository
+
 ## Project Structure
 
 ```text
